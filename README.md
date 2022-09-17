@@ -61,3 +61,12 @@ prettier
 
 安装 prettier 与 eslint 配置工具 npm install eslint-config-prettier
 并修改 eslint config extends 最后一项增加 "prettier" 使 prettier 生效
+
+commitlint
+
+下载依赖：Install commitlint cli and conventional config
+npm install --save-dev @commitlint/{config-conventional,cli}
+
+新建配置文件：echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
+
+配置提交：npx husky add .husky/commit-msg "npx --no -- commitlint --edit ${1}"
