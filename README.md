@@ -44,4 +44,20 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
 # jira
+
+2.2 配置 eslint、[Prettier](https://prettier.io/docs/en/install.html)和 commitlint
+
+prettier
+
+下载依赖包 npm install --save-dev --save-exact prettier
+
+新建配置文件 echo {}> .prettierrc.json
+
+新建忽略文件 .prettierignore build coverage
+
+安装预提交检验工具 npx mrm@2 lint-staged
+
+安装 prettier 与 eslint 配置工具 npm install eslint-config-prettier
+并修改 eslint config extends 最后一项增加 "prettier" 使 prettier 生效
