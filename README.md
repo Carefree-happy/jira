@@ -70,3 +70,15 @@ npm install --save-dev @commitlint/{config-conventional,cli}
 新建配置文件：echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
 
 配置提交：npx husky add .husky/commit-msg "npx --no -- commitlint --edit ${1}"
+
+build
+chore
+ci
+docs
+feat
+fix
+perf
+refactor
+revert
+style
+test
