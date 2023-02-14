@@ -1,13 +1,10 @@
-import { LoginScreen } from "login";
-import ProjectList from "projectList";
+import { AuthenticatedApp } from "authenticatedApp";
+import { useAuth } from "context/auth-context";
+import { UnauthenticatedApp } from "unauthenticated-app";
 
 function App() {
-  return (
-    <>
-      <LoginScreen />
-      {/* <ProjectList></ProjectList> */}
-    </>
-  );
+  const { user } = useAuth();
+  return <>{user ? <AuthenticatedApp /> : <UnauthenticatedApp />}</>;
 }
 
 export default App;

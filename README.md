@@ -76,3 +76,6 @@ Content-Type:application/octet-stream,只可以上传二进制数据，通常用
 !!!important 安装 imooc-jira-tool,不需要手动 install
 
 npx imooc-jira-tool
+
+进行 register 之前先删除
+npx msw init public
