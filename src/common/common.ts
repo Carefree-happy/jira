@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useMount = (callback) => {
+const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
   }, []);
@@ -32,7 +32,7 @@ const useMount = (callback) => {
 //     log()#3 // 发现 timeout#2! 取消之，然后设置timeout#3
 //             // 所以，log()#3 结束后，就只剩timeout#3在独自等待了
 
-const useDebounce = (value, delay) => {
+const useDebounce = (value: any, delay?: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
@@ -46,37 +46,39 @@ const useDebounce = (value, delay) => {
 };
 
 //函数拷贝
-const copyObj = (obj = {}) => {
-  //变量先置空
-  let newobj = null;
+// const copyObj = (obj = {}) => {
+//   //变量先置空
+//   let newobj = null;
 
-  //判断是否需要继续进行递归
-  if (typeof obj == "object" && obj !== null) {
-    newobj = obj instanceof Array ? [] : {};
-    //进行下一层递归克隆
-    for (var i in obj) {
-      newobj[i] = copyObj(obj[i]);
-    }
-    //如果不是对象直接赋值
-  } else newobj = obj;
+//   //判断是否需要继续进行递归
+//   if (typeof obj == "object" && obj !== null) {
+//     newobj = obj instanceof Array ? [] : {};
+//     //进行下一层递归克隆
+//     for (var i in obj) {
+//       newobj[i] = copyObj(obj[i]);
+//     }
+//     //如果不是对象直接赋值
+//   } else newobj = obj;
 
-  return newobj;
-};
+//   return newobj;
+// };
 
-const isFalsy = (value) => (value === 0 ? false : !value);
+const isFalsy = (value: any) => (value === 0 ? false : !value);
 
 // 在一个函数里，改变传入的对象本身是不好的
-const cleanObject = (object) => {
+const cleanObject = (object: object) => {
   // Object.assign({}, object)
   const result = { ...object };
   Object.keys(result).forEach((key) => {
     // 0
+    // @ts-ignore
     const value = result[key];
     if (isFalsy(value)) {
+      // @ts-ignore
       delete result[key];
     }
   });
   return result;
 };
 
-export { copyObj, isFalsy, cleanObject, useDebounce, useMount };
+export { isFalsy, cleanObject, useDebounce, useMount };
