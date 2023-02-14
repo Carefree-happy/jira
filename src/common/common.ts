@@ -63,7 +63,7 @@ const useDebounce = (value: any, delay?: number) => {
 //   return newobj;
 // };
 
-const isFalsy = (value: any) => (value === 0 ? false : !value);
+const isFalsy = (value: unknown) => (value === 0 ? false : !value);
 
 // 在一个函数里，改变传入的对象本身是不好的
 const cleanObject = (object: object) => {
