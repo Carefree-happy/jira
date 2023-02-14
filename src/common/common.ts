@@ -1,5 +1,26 @@
 import { useEffect, useState } from "react";
 
+const useArray = <T>(persons: T[]) => {
+  const [value, setValue] = useState(persons);
+
+  const clear = () => setValue([]);
+
+  const removeIndex = (index: number) => {
+    const copy = [...value];
+    copy.splice(index, 1);
+    setValue(copy);
+  };
+
+  const add = (item: T) => setValue([item, ...value]);
+
+  return {
+    value,
+    clear,
+    removeIndex,
+    add,
+  };
+};
+
 const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
@@ -81,4 +102,4 @@ const cleanObject = (object: object) => {
   return result;
 };
 
-export { isFalsy, cleanObject, useDebounce, useMount };
+export { isFalsy, cleanObject, useDebounce, useMount, useArray };
