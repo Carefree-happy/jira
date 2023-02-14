@@ -44,3 +44,31 @@ package.json -> lint-staged {} 中添加 -> ts,tsx
 echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
 
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit ${1}'
+
+- json-server
+  REST API
+  GET /tickets // 列表
+  GET /tickets/12 // 详情
+  POST /tickets // 增加
+  PUT /tickets/12 // 替换
+  PATCH /tickets/12 // 修改
+  DELETE /tickets/12 // 删除
+
+POST 方法, 添加子资源时调用 POST 方法
+PUT HTTP 方法未更改意味着, 如果您多次重试请求，那将等于一次请求转换。
+PATCH HTTP 方法被认为是非幂等的.如果您多次重试请求，您最终将拥有多个具有不同 URI 的资源。
+
+mkdir server & cd server & echo { \'users\': [] \}>db.json
+
+-- postman 见相关配置
+form-data
+等价于 http 请求中的 multipart/form-data,它会将表单的数据处理为一条消息
+
+x-www-form-urlencoded ✓
+即 application/x-www-from-urlencoded，将表单内的数据转换为 Key-Value。
+
+raw
+raw 对应的是入参是任意格式的可以上传任意格式的文件，可以上传 text、json、xml、html
+
+binary
+Content-Type:application/octet-stream,只可以上传二进制数据，通常用来上传文件，但是一次只能上传一个文件
