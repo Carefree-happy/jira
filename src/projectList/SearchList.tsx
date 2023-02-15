@@ -11,11 +11,12 @@ interface SearchPanelProps {
 }
 
 const Option = Select.Option;
+const Item = Form.Item;
 
 const SearchList = ({ param, setParam, users }: SearchPanelProps) => {
   return (
-    <Form>
-      <div>
+    <Form style={{ marginBottom: "2rem" }} layout={"inline"}>
+      <Item>
         {/* setParam(Object.assign({}, param, {name: evt.target.value})) */}
         <Input
           type="text"
@@ -27,7 +28,8 @@ const SearchList = ({ param, setParam, users }: SearchPanelProps) => {
             });
           }}
         />
-
+      </Item>
+      <Item>
         <Select
           value={param.personId}
           onChange={(evt) =>
@@ -44,7 +46,7 @@ const SearchList = ({ param, setParam, users }: SearchPanelProps) => {
             </Option>
           ))}
         </Select>
-      </div>
+      </Item>
     </Form>
   );
 };
