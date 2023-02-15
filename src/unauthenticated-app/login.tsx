@@ -1,5 +1,6 @@
 import { useAuth } from "context/auth-context";
-import { Form, Input, Button } from "antd";
+import { Form, Input } from "antd";
+import { LongButton } from "unauthenticated-app";
 const Item = Form.Item;
 export const LoginScreen = () => {
   const { login } = useAuth();
@@ -21,12 +22,12 @@ export const LoginScreen = () => {
         name={"password"}
         rules={[{ required: true, message: "请输入密码" }]}
       >
-        <Input type="password" id={"password"} />
+        <Input placeholder={"密码"} type="password" id={"password"} />
       </Item>
       <Item>
-        <Button htmlType={"submit"} type={"primary"}>
+        <LongButton htmlType={"submit"} type={"primary"}>
           登录
-        </Button>
+        </LongButton>
       </Item>
     </Form>
   );

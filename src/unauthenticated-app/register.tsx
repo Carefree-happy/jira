@@ -1,5 +1,6 @@
-import { Button, Form, Input } from "antd";
+import { Form, Input } from "antd";
 import { useAuth } from "context/auth-context";
+import { LongButton } from "unauthenticated-app";
 
 const Item = Form.Item;
 
@@ -26,7 +27,7 @@ export const RegisterScreen = () => {
         <Input placeholder={"密码"} type="password" id={"password"} />
       </Item>
       <Item>
-        <Button htmlType={"submit"}>注册</Button>
+        <LongButton htmlType={"submit"}>注册</LongButton>
       </Item>
     </Form>
   );
