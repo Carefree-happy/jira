@@ -2,9 +2,7 @@ import List from "./List";
 import SearchList from "./SearchList";
 import { useEffect, useState } from "react";
 import { cleanObject, useDebounce, useMount } from "common/common";
-import * as qs from "qs";
-
-const apiUrl = process.env.REACT_APP_API_URL;
+import { useHttp } from "common/http";
 
 const ProjectList = () => {
   const [users, setUsers] = useState([]);
@@ -15,23 +13,14 @@ const ProjectList = () => {
   });
   const debounceParam = useDebounce(param, 2000)
   const [list, setList] = useState([]);
+  const client = useHttp();
 
   useEffect(() => {
-    fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(debounceParam))}`).then(
-      async (response) => {
-        if (response.ok) {
-          setList(await response.json());
-        }
-      }
-    );
+    client("projects", {data: cleanObject(debounceParam)}).then(setList)
   }, [debounceParam]);
 
   useMount(() => {
-    fetch(`${apiUrl}/users`).then(async (response) => {
-      if (response.ok) {
-        setUsers(await response.json());
-      }
-    });
+    client("users").then(setUsers)
   });
 
   return (
