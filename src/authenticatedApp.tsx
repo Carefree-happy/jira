@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Button, Dropdown, Menu, MenuProps } from "antd";
+import { Button, Dropdown, Menu } from "antd";
 import { Row } from "components/lib";
 import { useAuth } from "context/auth-context";
 import ProjectList from "projectList";
@@ -26,7 +26,9 @@ export const AuthenticatedApp = () => {
               </Menu>
             }
           >
-            <a onClick={(e) => e.preventDefault()}>Hi, {user?.name}</a>
+            <Button onClick={(e) => e.preventDefault()}>
+              Hi, {user?.name}
+            </Button>
           </Dropdown>
         </HeaderRight>
       </Header>
