@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "@emotion/styled";
 import logo from "../assets/logo.svg";
 import left from "../assets/left.svg";
